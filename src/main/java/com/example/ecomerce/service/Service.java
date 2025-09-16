@@ -41,7 +41,6 @@ public class Service {
             .collect(Collectors.toList());
     }
 
-    @GetMapping("/books")
     public @ResponseBody List<BookDTO> getBooksDTO() {
         return StreamSupport.stream(bookRepository
             .findAll().spliterator(), false)

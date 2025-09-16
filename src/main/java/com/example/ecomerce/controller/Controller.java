@@ -20,7 +20,11 @@ import java.util.List;
 @RequestMapping("/api")
 public class Controller {
 
-    private Service service;
+    /**
+     * IntelliJ told me to put this on final
+     * To guarantee immutability to this value
+     */
+    private final Service service;
 
     public Controller(Service service) {
         this.service = service;
