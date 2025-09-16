@@ -2,17 +2,9 @@ package com.example.ecomerce.controller;
 
 import com.example.ecomerce.model.dto.AuthorDTO;
 import com.example.ecomerce.model.dto.BookDTO;
-import com.example.ecomerce.model.entity.Author;
-import com.example.ecomerce.model.entity.Book;
-import com.example.ecomerce.repository.AuthorRepository;
-import com.example.ecomerce.repository.BookRepository;
 import com.example.ecomerce.service.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
