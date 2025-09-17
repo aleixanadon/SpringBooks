@@ -3,15 +3,13 @@ package com.example.ecomerce.model.dto;
 public class BookDTO {
     String isbn;
     String title;
-    String author_id;
     int publisher_id;
     String year_pub;
     String description;
 
-    public BookDTO(String isbn, String title, String author_id, String year_pub, String description) {
+    public BookDTO(String isbn, String title, String year_pub, String description) {
         this.isbn = isbn;
         this.title = title;
-        this.author_id = author_id;
         this.year_pub = year_pub;
         this.description = description;
     }
@@ -30,14 +28,6 @@ public class BookDTO {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getAuthor_id() {
-        return author_id;
-    }
-
-    public void setAuthor_id(String author_id) {
-        this.author_id = author_id;
     }
 
     public String getYear_pub() {

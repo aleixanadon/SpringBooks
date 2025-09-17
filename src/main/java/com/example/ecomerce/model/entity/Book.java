@@ -13,10 +13,13 @@ public class Book {
 
     private String isbn;
     private String title;
-    private String author_id;
     private int publisher_id;
     private String year_pub;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false) // fk en la tabla books
+    private Author author;
 
     // For JPA/Hibernate things.
     protected Book() {}
@@ -31,7 +34,6 @@ public class Book {
     ) {
        this.isbn = isbn;
        this.title = title;
-       this.author_id = author_id;
        this.publisher_id = publisher_id;
        this.year_pub = year_pub;
        this.description = description;
@@ -49,10 +51,6 @@ public class Book {
         return title;
     }
 
-    public String getAuthor_id() {
-        return author_id;
-    }
-
     public int getPublisher_id() {
         return publisher_id;
     }
@@ -66,6 +64,6 @@ public class Book {
     }
 
     public BookDTO toDTO() {
-        return new BookDTO(isbn, title, author_id, year_pub, description);
+        return new BookDTO(isbn, title, year_pub, description);
     }
 }

@@ -1,11 +1,11 @@
 package com.example.ecomerce.controller;
 
 import com.example.ecomerce.model.dto.AuthorDTO;
-import com.example.ecomerce.model.dto.BookDTO;
-import com.example.ecomerce.service.Service;
+import com.example.ecomerce.service.AuthorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Controller only sends results in json.
@@ -17,26 +17,26 @@ import java.util.List;
 * */
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/api")
-public class Controller {
+@RequestMapping("/authors")
+public class AuthorController {
 
     /**
      * IntelliJ told me to put this on final
      * To guarantee immutability to this value
      */
-    private final Service service;
+    private final AuthorService authorService;
 
-    public Controller(Service service) {
-        this.service = service;
+    public AuthorController(AuthorService authorService) {
+        this.authorService = authorService;
     }
 
-    @GetMapping("/authors")
+    @GetMapping()
     public @ResponseBody List<AuthorDTO> getAuthors() {
-        return service.getAuthorsDTO();
+        return authorService.getAuthorsDTO();
     }
 
-    @GetMapping("/books")
-    public @ResponseBody List<BookDTO> getBooks() {
-        return service.getBooksDTO();
+    @GetMapping("/{id}")
+    public @ResponseBody Optional<AuthorDTO> getAuthorById(@PathVariable int id) {
+        return authorService.getAuthorDTOById(id);
     }
 }

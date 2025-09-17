@@ -3,6 +3,8 @@ package com.example.ecomerce.model.entity;
 import com.example.ecomerce.model.dto.AuthorDTO;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -17,13 +19,24 @@ public class Author {
     String country;
 
     /*
+    * This is done to maintain the OneToMany relation between authors and books
+    * because one author can have more than one book.
+    *
+    * */
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Book> books;
+
+    /*
     JPA/Hibernate needs a constructor without arguments
     to create instances for the entities.
     I protected it to avoid using it accidentally.
      */
     protected Author() {}
 
-    public Author(int author_id, String name_last, String name_first, String country) {
+    public Author(
+            int author_id, String name_last,
+            String name_first, String country
+    ) {
         this.author_id = author_id;
         this.name_last = name_last;
         this.name_first = name_first;
